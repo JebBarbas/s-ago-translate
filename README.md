@@ -19,64 +19,74 @@ npm i s-ago-translate
 ## Usage
 
 It has the same usage as the `ago` function from `s-ago`, but you need to pass a new parameter named 
-lang  that must be a ***Text Language Package*** (TLP). This parameter is the language in that you want 
-the human  readable text. You can find them in the `TLPS` object, followed by a language codes according 
+lang that must be a property from the exported object Langs. This parameter is the language in that you want 
+the human  readable text. You can find them in the `Langs` object, followed by a language codes according 
 to ISO 639-1.
 
 The Following example is also from the s-ago package, but the code is modified to add the new parameter.
 
 ```js
-let {ago, TLPS} = require('s-ago-translate');
+const {ago, Langs} = require('s-ago-translate');
 
 // Or if you are using import-export
-// import { ago, TLPS } from 's-ago-translate'
+// import { ago, Langs } from 's-ago-translate'
  
 let now = new Date();
-let yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
 let hoursAgo = new Date(now.getTime() - (6 * 60 * 60 * 1000));
 let yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-let tomorrow = new Date(now.getTime() + (6 * 60 * 60 * 1000));
+let tomorrow = new Date(now.getTime() + (24 * 60 * 60 * 1000));
 let inSixHours = new Date(now.getTime() + (6 * 60 * 60 * 1000));
 let inTwoWeeks = new Date(now.getTime() + (2 * 7 * 24 * 60 * 60 * 1000));
  
 // present
-ago(now, TLPS.EN); // 'just now', the used TLP was EN (english)
+ago(now, Langs.EN); // 'just now', the used TLP was EN (english)
  
 // past
-ago(yesterday, TLPS.ES); // 'ayer' (yesterday), the used TLP was ES (spanish)
-ago(hoursAgo, TLPS.ES); // 'hace 6 horas' (6 hours ago), the used TLP was ES (spanish)
+ago(yesterday, Langs.ES); // 'ayer' (yesterday), the used TLP was ES (spanish)
+ago(hoursAgo, Langs.ES); // 'hace 6 horas' (6 hours ago), the used TLP was ES (spanish)
  
 // future
-ago(inSixHours, TLPS.IT); // 'in 6 ore' (in 6 hours), the used TLP was IT (italian)
-ago(tomorrow, TLPS.IT); // 'domani' (tomorrow), the used TLP was IT (italian)
+ago(inSixHours, Langs.IT); // 'in 6 ore' (in 6 hours), the used TLP was IT (italian)
+ago(tomorrow, Langs.IT); // 'domani' (tomorrow), the used TLP was IT (italian)
  
 // max unit
-ago(inTwoWeeks, TLPS.FR);  // 'dans 2 semaines' (in 2 weeks), the used TLP was FR (french)
-ago(inTwoWeeks, TLPS.FR, 'day'); // 'dans 14 jours' (in 14 days), the used TLP was FR (french)
+ago(inTwoWeeks, Langs.FR);  // 'dans 2 semaines' (in 2 weeks), the used TLP was FR (french)
+ago(inTwoWeeks, Langs.FR, 'day'); // 'dans 14 jours' (in 14 days), the used TLP was FR (french)
 ```
 
-For more information about how `ago` works (not including TLPS), visit the 
+In cases where you want to translate to only 1 language (like spanish for example) you can only
+import the required Lang.
+
+```js
+const {ago, Langs:{ES}} = require('s-ago-translate')
+
+const now = new Date()
+
+ago(now, ES) // en este momento
+```
+
+For more information about how the `ago` function works, visit the 
 [s-ago npm page](https://www.npmjs.com/package/s-ago).
 
 ## Available Languages
 
-These are the availables TLPS.
+These are the availables Langs.
 
-- English (`TLPS.EN`)
-- Spanish (`TLPS.ES`)
-- Portuguese (`TLPS.PT`)
-- German (`TLPS.DE`)
-- French (`TLPS.FR`)
-- Italian (`TLPS.IT`)
+- English (`Langs.EN`)
+- Spanish (`Langs.ES`)
+- Portuguese (`Langs.PT`)
+- German (`Langs.DE`)
+- French (`Langs.FR`)
+- Italian (`Langs.IT`)
 
-These are TLPS NOT AVAILABLE yet, but that will be in a future (or that's the idea).
+These are Langs NOT AVAILABLE yet, but that will be in a future (or that's the idea).
 
-- Dutch (`TLPS.NL`)
-- Polish (`TLPS.PL`)
-- Ukrainian  (`TLPS.UK`)
-- Russian (`TLPS.RU`)
-- Turkish (`TLPS.TR`)
-- Japanese (`TLPS.JA`)
-- Korean (`TLPS.KO`)
-- Thai (`TLPS.TH`)
-- Chinese (`TLPS.ZH`)
+- Dutch (`Langs.NL`)
+- Polish (`Langs.PL`)
+- Ukrainian  (`Langs.UK`)
+- Russian (`Langs.RU`)
+- Turkish (`Langs.TR`)
+- Japanese (`Langs.JA`)
+- Korean (`Langs.KO`)
+- Thai (`Langs.TH`)
+- Chinese (`Langs.ZH`)
