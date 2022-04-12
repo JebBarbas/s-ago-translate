@@ -1,0 +1,36 @@
+{
+  "name": "s-ago-translate",
+  "version": "1.0.0",
+  "description": "A package based in 's-ago' that I made to take the functionality of the 'ago' function and translate it to many languages.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "release": "standard-version",
+    "share": "git push --follow-tags origin main && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JebBarbas/s-ago-translate.git"
+  },
+  "keywords": [
+    "s-ago",
+    "tranlate",
+    "translation",
+    "date",
+    "string"
+  ],
+  "author": "jebbarbas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JebBarbas/s-ago-translate/issues"
+  },
+  "homepage": "https://github.com/JebBarbas/s-ago-translate#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint": "^8.13.0",
+    "standard-version": "^9.3.2",
+    "typescript": "^4.6.3"
+  }
+}
