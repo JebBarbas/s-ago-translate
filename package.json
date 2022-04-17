@@ -1,6 +1,6 @@
 {
   "name": "s-ago-translate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A package based in 's-ago' that I made to take the functionality of the 'ago' function and translate it to many languages.",
   "main": "dist/index.js",
   "scripts": {
