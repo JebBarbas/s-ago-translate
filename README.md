@@ -30,13 +30,17 @@ const {ago, Langs} = require('s-ago-translate');
 
 // Or if you are using import-export
 // import { ago, Langs } from 's-ago-translate'
- 
-let now = new Date();
-let hoursAgo = new Date(now.getTime() - (6 * 60 * 60 * 1000));
-let yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-let tomorrow = new Date(now.getTime() + (24 * 60 * 60 * 1000));
-let inSixHours = new Date(now.getTime() + (6 * 60 * 60 * 1000));
-let inTwoWeeks = new Date(now.getTime() + (2 * 7 * 24 * 60 * 60 * 1000));
+
+let now = Date.now();
+let hoursAgo = new Date(now - (6 * 60 * 60 * 1000));
+let yesterday = new Date(now - (24 * 60 * 60 * 1000));
+
+// In newer versions, you don't need to convert the miliseconds to a Date object
+// this is very useful because, in some cases, you store created or edited dates
+// in databases as numbers indicating miliseconds.
+let tomorrow = now + (24 * 60 * 60 * 1000);
+let inSixHours = now + (6 * 60 * 60 * 1000);
+let inTwoWeeks = now + (2 * 7 * 24 * 60 * 60 * 1000);
  
 // present
 ago(now, Langs.EN); // 'just now', the used TLP was EN (english)
